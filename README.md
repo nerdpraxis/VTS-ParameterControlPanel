@@ -1,3 +1,5 @@
+[![Download Latest Release](https://img.shields.io/github/v/release/nerdpraxis/VTS-ParameterControlPanel?label=Download&style=for-the-badge)](https://github.com/nerdpraxis/VTS-ParameterControlPanel/releases/latest)
+
 # VTS Control Panel
 
 A standalone VTube Studio parameter controller that allows you to create, manage, and animate custom parameters for your VTube Studio model.
@@ -16,16 +18,108 @@ A standalone VTube Studio parameter controller that allows you to create, manage
 - 💾 **Parameter Persistence** - Save and load parameter configurations
 - 🔍 **Filter & Search** - Quickly find parameters in large setups
 - 🎨 **Dark Theme UI** - Modern, easy-on-the-eyes interface
+- ✏️ **Double-Click to Rename** - Easily rename parameters by double-clicking their name
+
+## Quick Start
+
+1. **Download** the latest release using the badge above
+2. **Extract** the ZIP file
+3. **Run** `VTS-Control-Panel.exe`
+4. **Connect** to VTube Studio (Settings tab)
+5. **Create** and animate parameters (VTS Parameters tab)
+
+## Parameter Controls Explained
+
+Understanding what each control does will help you create amazing animations!
+
+### Basic Settings
+
+| Control | Description |
+|---------|-------------|
+| **Parameter Name** | Unique identifier for the parameter in VTube Studio. Double-click to rename! |
+| **Enabled Checkbox** | Enable/disable this parameter's animation |
+| **Min/Max Values** | Range limits for the parameter (-10 to 10 for rotation, -1 to 1 for others) |
+| **Default Value** | Starting value when parameter is created |
+
+### Animation Settings
+
+| Control | Description |
+|---------|-------------|
+| **Math Function** | Choose animation type:<br>• **Sine Wave** - Smooth oscillation<br>• **Cosine Wave** - Sine wave offset by 90°<br>• **Triangle Wave** - Linear up/down movement<br>• **Square Wave** - Sharp on/off switching<br>• **Sawtooth Wave** - Ramp up then instant drop<br>• **Random Wave** - Natural random movement<br>• **Gaussian Wave** - Bell curve oscillation<br>• **Perlin Noise** - Smooth organic noise |
+| **Math Frequency** | How fast the wave cycles (higher = faster oscillation) |
+| **Math Amplitude** | Height of the wave (how far from center it moves) |
+| **Math Offset** | Baseline shift (moves the whole wave up/down) |
+| **Generation Speed** | Overall speed multiplier for value generation |
+| **Values Per Second** | How many times per second to update this parameter |
+
+### Pause Patterns
+
+Create breathing/idle patterns by adding pauses:
+
+| Control | Description |
+|---------|-------------|
+| **Enable Pause** | Toggle pause pattern on/off |
+| **Pause Duration** | How long to hold the pause value (seconds) |
+| **Pause Interval** | Time between pauses (seconds) |
+| **Pause Value** | What value to hold during pause |
+| **Duration Random %** | Add variance to pause length |
+| **Interval Random %** | Add variance to pause timing |
+| **Amount Random %** | Add variance to pause value |
+
+### Randomization
+
+Add natural variation to parameters:
+
+| Control | Description |
+|---------|-------------|
+| **Enable Random** | Toggle randomization on/off |
+| **Random Percent** | How much to vary the value (±percentage) |
+| **Random Seed** | Seed for reproducible randomness |
+| **Random Function** | Distribution type (Uniform/Gaussian/etc.) |
+
+## Common Use Cases
+
+### 1. Idle Animation
+
+Create subtle head movements when not talking:
+
+1. Add parameter `FaceAngleX` (head tilt)
+2. Set Math Function: **Random Wave**
+3. Set Min: `-5`, Max: `5`
+4. Set Math Frequency: `0.3` (slow)
+5. Set Math Amplitude: `0.7` (subtle)
+6. Enable Pause: Duration `3s`, Interval `8s`
+7. Enable and start heartbeat
+
+### 2. Breathing Effect
+
+Add natural breathing movement:
+
+1. Add parameter `BreathAmount`
+2. Set Math Function: **Sine Wave**
+3. Set Math Frequency: `0.2` (breathing rate)
+4. Set Math Amplitude: `1.0`
+5. Set Values Per Second: `10` (smooth)
+6. Enable and start heartbeat
+
+### 3. Random Blinking
+
+Occasional random movements:
+
+1. Add parameter `EyeOpenLeft`
+2. Set Math Function: **Random Wave**
+3. Enable Pause: Duration `0.2s`, Interval `4s`
+4. Set Interval Random: `50%` (varies 2-6s)
+5. Enable and start heartbeat
 
 ## Requirements
 
 - **Windows 10/11**
-- **Python 3.11** (included in venv)
 - **VTube Studio** (running and API enabled)
-- **PyQt6** (installed in venv)
-- **websockets** library (installed in venv)
 
-## Setup Guide
+*Note: The standalone executable includes all necessary dependencies!*
+
+## Full Setup Guide
 
 ### 1. Prerequisites
 
@@ -70,7 +164,7 @@ VTS-Control-Panel.exe
 ### 3. First Time Setup
 
 1. **Launch the Application**
-   - Run `run.bat` or the built executable
+   - Run the downloaded `VTS-Control-Panel.exe`
 
 2. **Configure Connection**
    - Go to the **Settings** tab
@@ -105,55 +199,6 @@ The main tab where you create and manage parameters.
 - **Disable All** - Quickly disable all parameters at once
 - **▶ Start Heartbeat** - Begin real-time parameter animation
 
-### Parameter Controls Explained
-
-Each parameter card contains:
-
-#### Basic Settings
-
-| Control | Description |
-|---------|-------------|
-| **Parameter Name** | Unique identifier for the parameter in VTube Studio |
-| **Enabled Checkbox** | Enable/disable this parameter's animation |
-| **Min/Max Values** | Range limits for the parameter (-10 to 10 for rotation, -1 to 1 for others) |
-| **Default Value** | Starting value when parameter is created |
-
-#### Animation Settings
-
-| Control | Description |
-|---------|-------------|
-| **Math Function** | Choose animation type:<br>• **Sine Wave** - Smooth oscillation<br>• **Cosine Wave** - Sine wave offset by 90°<br>• **Triangle Wave** - Linear up/down movement<br>• **Square Wave** - Sharp on/off switching<br>• **Sawtooth Wave** - Ramp up then instant drop<br>• **Random Wave** - Natural random movement<br>• **Gaussian Wave** - Bell curve oscillation<br>• **Perlin Noise** - Smooth organic noise |
-| **Math Frequency** | How fast the wave cycles (higher = faster oscillation) |
-| **Math Amplitude** | Height of the wave (how far from center it moves) |
-| **Math Offset** | Baseline shift (moves the whole wave up/down) |
-| **Generation Speed** | Overall speed multiplier for value generation |
-| **Values Per Second** | How many times per second to update this parameter |
-
-#### Pause Patterns
-
-Create breathing/idle patterns by adding pauses:
-
-| Control | Description |
-|---------|-------------|
-| **Enable Pause** | Toggle pause pattern on/off |
-| **Pause Duration** | How long to hold the pause value (seconds) |
-| **Pause Interval** | Time between pauses (seconds) |
-| **Pause Value** | What value to hold during pause |
-| **Duration Random %** | Add variance to pause length |
-| **Interval Random %** | Add variance to pause timing |
-| **Amount Random %** | Add variance to pause value |
-
-#### Randomization
-
-Add natural variation to parameters:
-
-| Control | Description |
-|---------|-------------|
-| **Enable Random** | Toggle randomization on/off |
-| **Random Percent** | How much to vary the value (±percentage) |
-| **Random Seed** | Seed for reproducible randomness |
-| **Random Function** | Distribution type (Uniform/Gaussian/etc.) |
-
 ### Settings Tab
 
 Configure your VTube Studio connection:
@@ -164,41 +209,6 @@ Configure your VTube Studio connection:
 | **Auto-connect** | Automatically connect on startup |
 | **Status** | Current connection status (Connected ✓ / Not connected) |
 | **Connect Button** | Manually connect/disconnect |
-
-## Common Use Cases
-
-### 1. Idle Animation
-
-Create subtle head movements when not talking:
-
-1. Add parameter `FaceAngleX` (head tilt)
-2. Set Math Function: **Random Wave**
-3. Set Min: `-5`, Max: `5`
-4. Set Math Frequency: `0.3` (slow)
-5. Set Math Amplitude: `0.7` (subtle)
-6. Enable Pause: Duration `3s`, Interval `8s`
-7. Enable and start heartbeat
-
-### 2. Breathing Effect
-
-Add natural breathing movement:
-
-1. Add parameter `BreathAmount`
-2. Set Math Function: **Sine Wave**
-3. Set Math Frequency: `0.2` (breathing rate)
-4. Set Math Amplitude: `1.0`
-5. Set Values Per Second: `10` (smooth)
-6. Enable and start heartbeat
-
-### 3. Random Blinking
-
-Occasional random movements:
-
-1. Add parameter `EyeOpenLeft`
-2. Set Math Function: **Random Wave**
-3. Enable Pause: Duration `0.2s`, Interval `4s`
-4. Set Interval Random: `50%` (varies 2-6s)
-5. Enable and start heartbeat
 
 ## Configuration Files
 
