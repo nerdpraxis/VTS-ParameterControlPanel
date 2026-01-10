@@ -112,6 +112,69 @@ Occasional random movements:
 4. Set Interval Random: `50%` (varies 2-6s)
 5. Enable and start heartbeat
 
+### 4. Tail Animation
+
+Create a swaying tail movement:
+
+1. Add parameter `TailSwing` or `TailRotation`
+2. Set Math Function: **Sine Wave** (smooth back and forth)
+3. Set Min: `-15`, Max: `15` (swing angle)
+4. Set Math Frequency: `0.5` (moderate speed)
+5. Set Math Amplitude: `1.0`
+6. Set Math Offset: `0` (center position)
+7. Optional: Add slight randomization (5-10%) for natural variation
+8. Enable and start heartbeat
+
+**Tip:** For a more playful tail, use **Random Wave** instead with higher frequency!
+
+### 5. Additional Animal Ears
+
+Animate extra ears (fox, cat, bunny) independently:
+
+1. Add parameter `EarLeftRotation` and `EarRightRotation`
+2. Set Math Function: **Cosine Wave** (offset from each other)
+3. Set Min: `-10`, Max: `10`
+4. Set Math Frequency: `0.4` (gentle movement)
+5. Set Math Amplitude: `0.6` (subtle)
+6. For the right ear, add Math Offset: `0.5` (creates natural offset)
+7. Enable Pause: Duration `2s`, Interval `5s` (occasional twitches)
+8. Enable and start heartbeat
+
+**Advanced Tip:** Use different frequencies for left and right ears to create more organic movement!
+
+### 6. Companion Pet Eye Blink
+
+Make a companion pet/mascot blink naturally:
+
+1. Add parameter `PetEyeOpen` or `CompanionBlink`
+2. Set Math Function: **Square Wave** (instant blink)
+3. Set Min: `0` (closed), Max: `1` (open)
+4. Set Default Value: `1` (eyes open)
+5. Enable Pause: 
+   - Pause Value: `0` (eyes closed)
+   - Pause Duration: `0.15s` (quick blink)
+   - Pause Interval: `3s` (blink every 3 seconds)
+   - Interval Random: `60%` (varies between 1.2-4.8s)
+6. Enable and start heartbeat
+
+### 7. Companion Pet Look Around
+
+Make your pet/mascot look around curiously:
+
+1. Add parameter `PetHeadRotation` or `CompanionLookX`
+2. Set Math Function: **Random Wave**
+3. Set Min: `-20`, Max: `20` (look left/right range)
+4. Set Math Frequency: `0.2` (slow, curious movement)
+5. Set Math Amplitude: `0.8`
+6. Enable Pause:
+   - Pause Duration: `2s` (hold gaze)
+   - Pause Interval: `4s` (look around interval)
+   - Duration Random: `40%` (varied hold times)
+7. Optional: Add second parameter `PetLookY` for vertical looking
+8. Enable and start heartbeat
+
+**Pro Tip:** Combine horizontal and vertical look parameters for more realistic scanning behavior!
+
 ## Requirements
 
 - **Windows 10/11**
