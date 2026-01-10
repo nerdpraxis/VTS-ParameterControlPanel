@@ -1,0 +1,9 @@
+[VTS]
+api_url = ws://localhost:8001/
+auth_token = 
+auto_connect = false
+params_json = custom_params.json
+
+[UI]
+window_width = 1000
+window_height = 800
