@@ -4,6 +4,8 @@
 
 A standalone VTube Studio parameter controller that allows you to create, manage, and animate custom parameters for your VTube Studio model.
 
+![VTS Control Panel Demo](screenshots/example.gif)
+
 > **💡 Important Notes:**
 > - ✅ **No Camera Tracking Required** - Works completely independently of face/hand tracking
 > - ✅ **Model-Safe** - Does NOT modify your model files
