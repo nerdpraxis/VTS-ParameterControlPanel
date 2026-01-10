@@ -4,6 +4,12 @@
 
 A standalone VTube Studio parameter controller that allows you to create, manage, and animate custom parameters for your VTube Studio model.
 
+> **💡 Important Notes:**
+> - ✅ **No Camera Tracking Required** - Works completely independently of face/hand tracking
+> - ✅ **Model-Safe** - Does NOT modify your model files
+> - ✅ **Parameter Copy** - Can optionally extract and copy existing parameters from your model
+> - ✅ **Non-Destructive** - All animations are applied in real-time via the VTube Studio API
+
 ![VTS Control Panel](https://img.shields.io/badge/VTube%20Studio-Plugin-blue)
 ![Python](https://img.shields.io/badge/Python-3.11-green)
 ![PyQt6](https://img.shields.io/badge/PyQt6-UI-orange)
