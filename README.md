@@ -18,6 +18,7 @@ A standalone VTube Studio parameter controller that allows you to create, manage
 
 ## Features
 
+### Parameter Animation
 - ✨ **Real-time Parameter Control** - Create and manage custom VTube Studio parameters
 - 🎭 **Live Animation** - Animate your model with mathematical functions (sine, cosine, random waves, etc.)
 - 📊 **Multiple Animation Types** - Choose from various mathematical functions for natural movement
@@ -25,8 +26,15 @@ A standalone VTube Studio parameter controller that allows you to create, manage
 - 🎮 **Easy Connection** - Simple WebSocket connection to VTube Studio
 - 💾 **Parameter Persistence** - Save and load parameter configurations
 - 🔍 **Filter & Search** - Quickly find parameters in large setups
-- 🎨 **Dark Theme UI** - Modern, easy-on-the-eyes interface
 - ✏️ **Double-Click to Rename** - Easily rename parameters by double-clicking their name
+
+### Model Settings Manager (NEW!)
+- 🔄 **Transfer Settings Between Models** - Copy hotkeys, parameters, and expressions from one model to another
+- 🔒 **Automatic Backups** - All modifications create automatic backups for safety
+- 📋 **Selective Transfer** - Choose exactly what to transfer (individual hotkeys, specific parameters, etc.)
+- 🎯 **Visual Model Browser** - See all your models with thumbnails and metadata
+- 🛡️ **Safe Operations** - Validation and dry-run preview before making changes
+- 🎨 **Dark Theme UI** - Modern, easy-on-the-eyes interface
 
 ## Quick Start
 
@@ -35,6 +43,34 @@ A standalone VTube Studio parameter controller that allows you to create, manage
 3. **Run** `VTS-Control-Panel.exe`
 4. **Connect** to VTube Studio (Settings tab)
 5. **Create** and animate parameters (VTS Parameters tab)
+6. **Transfer settings** between models (Model Manager tab)
+
+## Model Manager Quick Start
+
+The Model Manager automatically discovers your VTube Studio installation and all your models:
+
+1. **Open the Model Manager tab**
+2. **Select source model** (the model you want to copy settings from)
+3. **Select target model** (the model you want to copy settings to)
+4. **Click "Transfer Settings →"** to copy everything
+5. **A backup is automatically created** before any changes
+
+### What Gets Transferred
+
+When you transfer settings between models:
+- ✅ **All Hotkeys** - Including keybinds and associated actions
+- ✅ **All Parameters** - Input/output mappings and ranges
+- ✅ **Expression Files** - `.exp3.json` and `.motion3.json` files
+- ✅ **Automatic UUID Generation** - New hotkey IDs to avoid conflicts
+- ✅ **Automatic Backup** - `.vtube.json.backup_[timestamp]` created
+
+### Safety Features
+
+- 🔒 **Automatic Backups** - Created before every modification
+- ✅ **Validation** - Checks file integrity before and after transfer
+- 🔄 **Rollback Support** - Can restore from backup if needed
+- ⚠️ **Confirmation Dialogs** - Warns before making changes
+- 📝 **Detailed Logs** - All operations are logged for troubleshooting
 
 ## Parameter Controls Explained
 

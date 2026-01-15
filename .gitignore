@@ -31,6 +31,9 @@ custom_params.json
 build/
 dist/
 
+# Release files
+*.zip
+
 # OS specific
 .DS_Store
 Thumbs.db

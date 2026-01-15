@@ -37,6 +37,8 @@ sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from config_manager import ConfigManager
 from vts_params_tab import VTSParamsTab
 from vts_settings_tab import VTSSettingsTab
+from vts_model_manager_tab import VTSModelManagerTab
+from backup_tab import BackupTab
 
 class VTSControlPanel(QMainWindow):
     """Main window for VTS Control Panel."""
@@ -72,9 +74,13 @@ class VTSControlPanel(QMainWindow):
         # Create tabs
         self.settings_tab = VTSSettingsTab(self.config_manager)
         self.params_tab = VTSParamsTab(self.config_manager, self.settings_tab.vts_service)
+        self.model_manager_tab = VTSModelManagerTab()
+        self.backup_tab = BackupTab()
         
         # Add tabs
         self.tabs.addTab(self.params_tab, "VTS Parameters")
+        self.tabs.addTab(self.model_manager_tab, "Model Manager")
+        self.tabs.addTab(self.backup_tab, "Backup & Restore")
         self.tabs.addTab(self.settings_tab, "Settings")
         
         # Apply theme
