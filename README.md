@@ -4,7 +4,9 @@
 
 A standalone VTube Studio parameter controller that allows you to create, manage, and animate custom parameters for your VTube Studio model.
 
-![VTS Control Panel Demo](screenshots/example.gif)
+[![VTS Control panel Demo](https://markdown-videos-api.jorgenkh.no/url?url=https%3A%2F%2Fyoutu.be%2Fm_usz0xdB8M)](https://youtu.be/m_usz0xdB8M)
+
+
 
 > **💡 Important Notes:**
 > - ✅ **No Camera Tracking Required** - Works completely independently of face/hand tracking
@@ -21,20 +23,21 @@ A standalone VTube Studio parameter controller that allows you to create, manage
 ### Parameter Animation
 - ✨ **Real-time Parameter Control** - Create and manage custom VTube Studio parameters
 - 🎭 **Live Animation** - Animate your model with mathematical functions (sine, cosine, random waves, etc.)
-- 📊 **Multiple Animation Types** - Choose from various mathematical functions for natural movement
+- 🎨 **Advanced Node Editor** - Visual programming system for complex animations (NEW!)
+- 📊 **15+ Animation Presets** - Fox ears, wagging tail, breathing, blinking, and more
+- 🔗 **Node-Based Logic** - Connect nodes for conditions, math, timing, and effects
+- 📈 **Live Preview Graph** - See your animation in real-time before applying
 - ⚡ **Heartbeat System** - Real-time parameter value generation and sending
 - 🎮 **Easy Connection** - Simple WebSocket connection to VTube Studio
 - 💾 **Parameter Persistence** - Save and load parameter configurations
 - 🔍 **Filter & Search** - Quickly find parameters in large setups
-- ✏️ **Double-Click to Rename** - Easily rename parameters by double-clicking their name
 
 ### Model Settings Manager (NEW!)
-- 🔄 **Transfer Settings Between Models** - Copy hotkeys, parameters, and expressions from one model to another
-- 🔒 **Automatic Backups** - All modifications create automatic backups for safety
+- 🔄 **Transfer Settings Between Model Versions** - Perfect for migrating settings when upgrading your model or working with multiple versions. Copy hotkeys, parameters, and expressions from older versions to newer ones without manual reconfiguration. Especially useful for Live2D riggers working with iterative model improvements.
+- 🔒 **Automatic Backups** - VTS configuration backups are created before any modifications (backup system is currently basic and VTS-only)
 - 📋 **Selective Transfer** - Choose exactly what to transfer (individual hotkeys, specific parameters, etc.)
 - 🎯 **Visual Model Browser** - See all your models with thumbnails and metadata
 - 🛡️ **Safe Operations** - Validation and dry-run preview before making changes
-- 🎨 **Dark Theme UI** - Modern, easy-on-the-eyes interface
 
 ## Quick Start
 
@@ -71,6 +74,69 @@ When you transfer settings between models:
 - 🔄 **Rollback Support** - Can restore from backup if needed
 - ⚠️ **Confirmation Dialogs** - Warns before making changes
 - 📝 **Detailed Logs** - All operations are logged for troubleshooting
+
+## Advanced Node Editor (NEW!)
+
+The Node Editor provides a visual programming interface for creating complex parameter animations:
+
+> **⚠️ Alpha/Beta Status:**
+> - The Node Editor is currently in **active development**
+> - ✅ Basic nodes work reliably (Timer, Wave, Random, Math, Range, Output)
+> - ⚠️ Some complex nodes may be broken or unstable:
+>   - **Read VTS Parameter** node (reading live VTS values)
+>   - **Twitch Chat React** nodes (chat integration)
+> - Expect bugs and breaking changes as development continues
+> - Use at your own risk for production streams!
+
+### Quick Start
+
+1. **Create a parameter** in the VTS Parameters tab
+2. **Click "⚙️ Advanced Mode"** on the parameter card
+3. **Add nodes** from the toolbar (Timer, Wave, Random, Math, etc.)
+4. **Connect nodes** by dragging from output to input sockets
+5. **Enable "Enable Advanced Mode"** checkbox
+6. **Close popup** - your animation is now running!
+
+### Available Nodes
+
+**Generators:**
+- ⏱️ **Timer** - Time-based values (count up, range, loop)
+- 🌊 **Wave** - Wave patterns (sine, triangle, square, bounce)
+- 🎲 **Random** - Random values at specified intervals
+- 🔢 **Number** - Constant values
+
+**Processing:**
+- ➕ **Math** - Add, subtract, multiply, divide, average
+- 📏 **Range** - Clamp values between min/max
+- 🔄 **Convert** - Type conversion (float, int, bool)
+- ⏸️ **Sample & Hold** - Update only at intervals
+
+**Logic:**
+- 🔀 **If/Else** - Conditional branching
+- 🔣 **Logic** - AND, OR, NOT operations
+- ⏰ **Time Schedule** - Time-based triggers
+
+**Output:**
+- 📤 **Output** - Send to VTube Studio (combines multiple inputs)
+
+### Animation Presets
+
+Load pre-built animations with one click:
+- 🦊 **Fox Ear Flick** - Random quick ear movements
+- 🐾 **Wagging Tail** - Natural wagging with speed variation
+- 💨 **Breathing Motion** - Smooth breathing animation
+- 👁️ **Eye Blink** - Natural occasional blinks
+- ✨ **Idle Sway** - Multi-frequency natural sway
+- 🎵 **Music Bounce** - Rhythmic up/down with variation
+- And 9 more!
+
+### Features
+
+- 📊 **Live Preview** - See output in real-time graph
+- 💾 **Save/Load** - Graphs persist across sessions
+- 🎨 **Visual Feedback** - Color-coded sockets by data type
+- 🔍 **Cycle Detection** - Warns about infinite loops
+- ⚡ **Optimized** - Caching and thread-safe evaluation
 
 ## Parameter Controls Explained
 
