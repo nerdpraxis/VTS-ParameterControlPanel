@@ -25,6 +25,13 @@ ENV/
 *.log
 config.ini
 custom_params.json
+backups/
+profiles/
+vts_backups/
+
+# Documentation (keep only README.md)
+*.md
+!README.md
 
 # PyInstaller
 *.spec
