@@ -1,0 +1,110 @@
+{
+  "nodes": [
+    {
+      "id": 1936200023440,
+      "type": "TimerNode",
+      "title": "\u23f1\ufe0f Timer",
+      "pos_x": 100.0,
+      "pos_y": 160.0,
+      "width": 180,
+      "height": 160,
+      "mode": "Count Up",
+      "min_value": 0.0,
+      "max_value": 10.0,
+      "loop_duration": 5.0
+    },
+    {
+      "id": 1936200101840,
+      "type": "WaveNode",
+      "title": "\ud83c\udf0a Wave",
+      "pos_x": 360.0,
+      "pos_y": 100.0,
+      "width": 180,
+      "height": 140,
+      "wave_type": "Smooth (Sine)",
+      "speed": 2.0,
+      "strength": 1.0
+    },
+    {
+      "id": 1936200102144,
+      "type": "RandomNode",
+      "title": "\ud83c\udfb2 Random",
+      "pos_x": 360.0,
+      "pos_y": 240.0,
+      "width": 180,
+      "height": 140,
+      "min_value": 0.7,
+      "max_value": 1.3,
+      "update_speed": 0.3
+    },
+    {
+      "id": 1936200102448,
+      "type": "MathNode",
+      "title": "\u2795 Math",
+      "pos_x": 600.0,
+      "pos_y": 160.0,
+      "width": 180,
+      "height": 100,
+      "operation": "Multiply"
+    },
+    {
+      "id": 1936200023760,
+      "type": "RangeNode",
+      "title": "\ud83d\udccf Range",
+      "pos_x": 840.0,
+      "pos_y": 160.0,
+      "width": 180,
+      "height": 130,
+      "min_value": -1.0,
+      "max_value": 1.0
+    },
+    {
+      "id": 1936200407888,
+      "type": "OutputNode",
+      "title": "\ud83d\udce4 Send to VTube Studio",
+      "pos_x": 1100.0,
+      "pos_y": 160.0,
+      "width": 180,
+      "height": 160,
+      "combine_mode": "First",
+      "num_inputs": 3
+    }
+  ],
+  "edges": [
+    {
+      "start_node_id": 1936200023440,
+      "start_socket_index": 0,
+      "end_node_id": 1936200101840,
+      "end_socket_index": 0,
+      "edge_type": 1
+    },
+    {
+      "start_node_id": 1936200101840,
+      "start_socket_index": 0,
+      "end_node_id": 1936200102448,
+      "end_socket_index": 0,
+      "edge_type": 1
+    },
+    {
+      "start_node_id": 1936200102144,
+      "start_socket_index": 0,
+      "end_node_id": 1936200102448,
+      "end_socket_index": 1,
+      "edge_type": 1
+    },
+    {
+      "start_node_id": 1936200102448,
+      "start_socket_index": 0,
+      "end_node_id": 1936200023760,
+      "end_socket_index": 0,
+      "edge_type": 1
+    },
+    {
+      "start_node_id": 1936200023760,
+      "start_socket_index": 0,
+      "end_node_id": 1936200407888,
+      "end_socket_index": 0,
+      "edge_type": 1
+    }
+  ]
+}

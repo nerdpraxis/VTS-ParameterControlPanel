@@ -106,9 +106,6 @@ class RestoreResultDialog(QDialog):
 
 
 class ResultDialog(QDialog):
-
-
-class ResultDialog(QDialog):
     """Dialog for displaying transfer results."""
     
     def __init__(self, result: TransferResult, parent=None):

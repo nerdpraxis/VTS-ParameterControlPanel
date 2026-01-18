@@ -1,0 +1,92 @@
+{
+  "nodes": [
+    {
+      "id": 2831680739344,
+      "type": "TimerNode",
+      "title": "\u23f1\ufe0f Timer",
+      "pos_x": 100.0,
+      "pos_y": 160.0,
+      "width": 180,
+      "height": 160,
+      "mode": "Count Up",
+      "min_value": 0.0,
+      "max_value": 10.0,
+      "loop_duration": 5.0
+    },
+    {
+      "id": 2831680789456,
+      "type": "WaveNode",
+      "title": "\ud83c\udf0a Wave",
+      "pos_x": 360.0,
+      "pos_y": 100.0,
+      "width": 180,
+      "height": 140,
+      "wave_type": "Bounce",
+      "speed": 2.0,
+      "strength": 0.5
+    },
+    {
+      "id": 2830725542800,
+      "type": "RandomNode",
+      "title": "\ud83c\udfb2 Random",
+      "pos_x": 360.0,
+      "pos_y": 240.0,
+      "width": 180,
+      "height": 140,
+      "min_value": 0.8,
+      "max_value": 1.2,
+      "update_speed": 0.5
+    },
+    {
+      "id": 2830726618640,
+      "type": "MathNode",
+      "title": "\u2795 Math",
+      "pos_x": 600.0,
+      "pos_y": 160.0,
+      "width": 180,
+      "height": 100,
+      "operation": "Multiply"
+    },
+    {
+      "id": 2830804452624,
+      "type": "OutputNode",
+      "title": "\ud83d\udce4 Send to VTube Studio",
+      "pos_x": 840.0,
+      "pos_y": 160.0,
+      "width": 180,
+      "height": 160,
+      "combine_mode": "First",
+      "num_inputs": 3
+    }
+  ],
+  "edges": [
+    {
+      "start_node_id": 2831680739344,
+      "start_socket_index": 0,
+      "end_node_id": 2831680789456,
+      "end_socket_index": 0,
+      "edge_type": 1
+    },
+    {
+      "start_node_id": 2831680789456,
+      "start_socket_index": 0,
+      "end_node_id": 2830726618640,
+      "end_socket_index": 0,
+      "edge_type": 1
+    },
+    {
+      "start_node_id": 2830725542800,
+      "start_socket_index": 0,
+      "end_node_id": 2830726618640,
+      "end_socket_index": 1,
+      "edge_type": 1
+    },
+    {
+      "start_node_id": 2830726618640,
+      "start_socket_index": 0,
+      "end_node_id": 2830804452624,
+      "end_socket_index": 0,
+      "edge_type": 1
+    }
+  ]
+}

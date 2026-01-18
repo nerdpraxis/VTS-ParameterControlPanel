@@ -232,16 +232,21 @@ class ModelSettingsManager:
         source_data: Dict[str, Any],
         target_data: Dict[str, Any],
         hotkey_ids: List[str],
-        generate_new_ids: bool = True
+        generate_new_ids: bool = True,
+        target_model_folder: Optional[Path] = None
     ) -> TransferResult:
         """
         Transfer hotkeys from source to target.
+        
+        Only transfers hotkeys if the target model already has the required
+        expression/animation files. This ensures hotkeys will work after transfer.
         
         Args:
             source_data: Source model data
             target_data: Target model data
             hotkey_ids: List of hotkey IDs to transfer
             generate_new_ids: Whether to generate new UUIDs
+            target_model_folder: Path to target model folder (for checking files)
             
         Returns:
             TransferResult with operation details
@@ -262,7 +267,27 @@ class ModelSettingsManager:
             return result
         
         # Transfer each hotkey
+        skipped = []
         for hotkey in hotkeys_to_transfer:
+            hotkey_name = hotkey.get('Name', 'Unknown')
+            file_ref = hotkey.get('File', '')
+            
+            # Check if expression file exists in target model (if file is required)
+            if file_ref and target_model_folder:
+                target_file = target_model_folder / file_ref
+                
+                if not target_file.exists():
+                    # Skip this hotkey - target model doesn't have the expression
+                    skipped.append({
+                        'name': hotkey_name,
+                        'file': file_ref,
+                        'action': hotkey.get('Action', '')
+                    })
+                    result.add_warning(
+                        f"Skipped '{hotkey_name}': Target model doesn't have '{file_ref}'"
+                    )
+                    continue
+            
             # Deep copy the hotkey data
             new_hotkey = json.loads(json.dumps(hotkey))
             
@@ -271,7 +296,7 @@ class ModelSettingsManager:
                 old_id = new_hotkey['HotkeyID']
                 new_id = VTSFileParser.generate_uuid()
                 new_hotkey['HotkeyID'] = new_id
-                result.add_log(f"Hotkey '{new_hotkey['Name']}': {old_id[:8]}... → {new_id[:8]}...")
+                result.add_log(f"✓ '{new_hotkey['Name']}': {old_id[:8]}... → {new_id[:8]}...")
             
             # Add to target
             target_hotkeys.append(new_hotkey)
@@ -280,7 +305,17 @@ class ModelSettingsManager:
         # Update target data
         target_data['Hotkeys'] = target_hotkeys
         
-        result.add_log(f"✓ Transferred {result.hotkeys_added} hotkeys")
+        # Summary
+        if result.hotkeys_added > 0:
+            result.add_log(f"✓ Transferred {result.hotkeys_added} hotkeys")
+        
+        if skipped:
+            result.add_log(f"⚠ Skipped {len(skipped)} hotkeys (missing expression files)")
+            for skip in skipped[:5]:  # Show first 5
+                result.add_log(f"  - {skip['name']} → {skip['file']}")
+            if len(skipped) > 5:
+                result.add_log(f"  ... and {len(skipped) - 5} more")
+        
         return result
     
     def transfer_parameters(
@@ -440,11 +475,15 @@ class ModelSettingsManager:
                 else:
                     hotkey_ids = settings.selected_hotkey_ids
                 
+                # Get target model folder for expression file checking
+                target_model_folder = target_path.parent
+                
                 hotkey_result = self.transfer_hotkeys(
                     source_data,
                     target_data,
                     hotkey_ids,
-                    settings.generate_new_ids
+                    settings.generate_new_ids,
+                    target_model_folder
                 )
                 
                 result.hotkeys_added = hotkey_result.hotkeys_added
